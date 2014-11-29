@@ -31,6 +31,7 @@ function render() {
 
         process.stdout.write('\033c')
         console.log(ascii.init(t, ctx, pic, newWidth, newHeight));
+        console.log('!!! i: ' + i);
         setTimeout(render, 100);
     });
 }
