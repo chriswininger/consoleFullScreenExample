@@ -100,6 +100,9 @@
         putc('I', stdout);
         putc('L', stdout);
         putc('E', stdout);
+        
+        [photoData release];
+        [ext release];
         return YES;
     } else {
         return [photoData writeToFile:path atomically:NO];
@@ -232,12 +235,15 @@
                 [[NSRunLoop currentRunLoop] runUntilDate:[now dateByAddingTimeInterval: interval]];
                 
                 [now release];
+                [nowstr release];
             }
+            [dateFormatter release];
 
         } else {
             image = [snap snapshot];                // Capture a frame
             
         }
+        
         //NSLog(@"Stopping...");
         [snap stopSession];                     // Stop session
         //NSLog(@"Stopped.");
@@ -246,6 +252,7 @@
     [snap release];
     
     if ( interval > 0 ){
+        [image release];
         return YES;
     } else {
         return image == nil ? NO : [ImageSnap saveImage:image toPath:path];
