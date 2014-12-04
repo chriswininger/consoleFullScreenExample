@@ -26,6 +26,13 @@ function render(buffer) {
         var pic = new Canvas.Image;
         var newWidth = 640;
         var newHeight = 480;
+
+		// yuyv
+		var pixelsRGB = [];
+		for (var i = 0; i < buffer.length; i++) {
+
+		}
+
         pic.src = buffer;
         var cv = new Canvas(newWidth, newHeight);
         var ctx = cv.getContext('2d');
